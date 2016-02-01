@@ -8,10 +8,11 @@ import org.apache.commons.math3.stat.inference.*;
 
 
 /**
- * Created by corythompson on 1/20/16.
+ * Created by Cory Thompson on 1/20/16.
+ * The Main class. This class contains the main function and uses Team and Parser for implementation.
+ * This class prints the values to the console
  */
 public class Main {
-
     public static void main(String[] args) {
         Parser p = new Parser("Input File/315Assignment1.txt");
         SummaryStatistics ssASM = new SummaryStatistics();
@@ -28,11 +29,6 @@ public class Main {
         double tStatistic;
         tStatistic = tTest.t(ssASM, ssPSM);
 
-        /*System.out.println(Double.toString(ssASM.getN()));
-        System.out.println(Double.toString(ssASM.getMean()));
-        System.out.println(Double.toString(ssASM))
-        System.out.println(Double.toString(tStatistic));*/
-
         System.out.printf("\n\n%-19s %-7s %-6s\n", "Type", "ASM", "PSM");
         printResult("sample size", ssASM.getN(), ssPSM.getN());
         printResult("mean", ssASM.getMean(), ssPSM.getMean());
@@ -44,6 +40,12 @@ public class Main {
         System.out.printf("\n%-15s %.6f", "t-Statistic", tStatistic);
     }
 
+    /**
+     * Prints the values to the console
+     * @param type String of the type of statistic computed.
+     * @param asm Actual Scoring Margin resulted
+     * @param psm Predicted Scoring Margin resulted
+     */
     public static void printResult(String type, double asm, double psm) {
         System.out.printf("%-20s", type);
         System.out.printf("%.2f\t", asm);
@@ -51,14 +53,3 @@ public class Main {
     }
 
 }
-
-/*class TTESTStat {
-    public static void Main(String[] args){
-        double[] sample1 = { 1  , 2  , 3   ,4 , 3, 5, 6.1, 3.4, 2.9, 4.4};
-        double[] sample2 = { 5.2, 4.2, 7.24,4 , 5, 6, 4.1, 5.9, 7.0, 8.0};
-        double t_statistic;
-        TTest ttest = new TTest();
-        t_statistic = ttest.t(sample1, sample2);
-        System.out.println(Double.toString( t_statistic) );
-    }
-}*/
